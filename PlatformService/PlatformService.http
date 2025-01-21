@@ -1,0 +1,11 @@
+@PlatformService_HostAddress = http://localhost:31938
+
+GET {{PlatformService_HostAddress}}/api/Platforms
+Accept: application/json
+
+###
+
+GET {{PlatformService_HostAddress}}/api/Platforms/1
+Accept: application/json
+
+###

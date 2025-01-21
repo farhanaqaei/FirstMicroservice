@@ -1,0 +1,106 @@
+# .NET Core build outputs
+bin/
+obj/
+out/
+
+# Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio Code files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Rider files
+.idea/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Dependencies
+*.nuget.props
+*.nuget.targets
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Environment files
+*.env
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Docker
+.docker/data/
+*.dockerfile.dev
+
+# Kubernetes
+*.kubeconfig
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+log.txt
+
+# Test Results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Swagger
+swagger.json
+swagger.yaml
+
+# Service configuration
+*.pfx
+*.key
+*.pem
+
+# Local development configuration
+local.settings.json
+*.Development.json
+
+# Cache files
+.sonarqube/
+.scannerwork/
+
+# Health checks
+healthchecks-db
+
+# Message Queue data
+mq-data/
+
+# Container volumes
+volumes/
+data/
