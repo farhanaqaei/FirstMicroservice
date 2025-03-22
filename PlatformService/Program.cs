@@ -4,6 +4,11 @@ using PlatformService.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Console.WriteLine("-------- Database Connection Debug Info --------");
+// Console.WriteLine($"Raw Connection String: {builder.Configuration.GetConnectionString("PlatformsConn")}");
+// Console.WriteLine($"SA_PASSWORD Environment Variable: {Environment.GetEnvironmentVariable("SA_PASSWORD")}");
+// Console.WriteLine("----------------------------------------------");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -11,8 +16,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(opt => 
-    opt.UseInMemoryDatabase("InMem"));
+if (builder.Environment.IsProduction())
+{
+    Console.WriteLine("--> Using SQL Server Db");
+    builder.Services.AddDbContext<AppDbContext>(opt =>
+        //opt.UseSqlServer(builder.Configuration.GetConnectionString("PlatformsConn")));
+        opt.UseSqlServer($"Server=mssql-clusterip-srv,1433;Initial Catalog=platformsdb;User ID=sa;Password={Environment.GetEnvironmentVariable("SA_PASSWORD")};TrustServerCertificate=True;"));
+}
+else
+{
+    Console.WriteLine("--> Using InMem Db");
+    builder.Services.AddDbContext<AppDbContext>(opt =>
+        opt.UseInMemoryDatabase("InMem"));
+}
 
 builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 
@@ -37,6 +53,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-PrepDb.PrepPopulaion(app);
+PrepDb.PrepPopulaion(app, app.Environment.IsProduction());
 
 app.Run();
