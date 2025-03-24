@@ -1,4 +1,4 @@
-@PlatformService_HostAddress = http://localhost:31938
+@PlatformService_HostAddress = http://localhost:5000
 
 GET {{PlatformService_HostAddress}}/api/Platforms
 Accept: application/json
@@ -9,3 +9,11 @@ GET {{PlatformService_HostAddress}}/api/Platforms/1
 Accept: application/json
 
 ###
+POST {{PlatformService_HostAddress}}/api/Platforms
+Content-Type: application/json
+
+{
+    "name": "Docker",
+    "publisher": "Docker Inc.",
+    "cost": "Free"
+}
