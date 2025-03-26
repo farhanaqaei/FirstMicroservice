@@ -5,4 +5,12 @@ Content-Type: application/json
 ###
 GET {{CommandService_HostAddress}}/api/c/platforms/
 ###
-GET {{CommandService_HostAddress}}/api/c/platforms/1/commands
+GET {{CommandService_HostAddress}}/api/c/platforms/6/commands
+###
+POST {{CommandService_HostAddress}}/api/c/platforms/6/commands
+Content-Type: application/json
+
+{
+    "howTo": "Build a .NET project",
+    "commandLine": "dotnet build"
+}
